@@ -16,7 +16,7 @@ const App = () => {
         <Navbar />
       </GridItem>
       
-      <GridItem area="main">
+      <GridItem area="main" marginTop="50px">
         <ProductContainer />
       </GridItem>
     </Grid>
