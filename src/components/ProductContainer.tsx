@@ -25,8 +25,8 @@ const ProductContainer = () => {
     imageProductThumbnail4,
   ];
   return (
-    <Grid templateColumns="repeat(2, 1fr)">
-      <GridItem>
+    <Grid templateColumns="repeat(2, 1fr)" paddingX={10}  >
+      <GridItem >
         <Box width="300px">
           <Image src={imageProduct} boxSize="300px" borderRadius="xl"></Image>
           <HStack justify="space-between">
@@ -44,12 +44,12 @@ const ProductContainer = () => {
           </HStack>
         </Box>
       </GridItem>
-      <GridItem>
-        <Text>SNEAKER COMPANY</Text>
-        <Text>Fall Limited Edition Sneakers</Text>
-        <Text>
+      <GridItem >
+        <Text fontWeight='bold' color='gray.500' textStyle='xs'>SNEAKER COMPANY</Text>
+        <Text textStyle='5xl' fontWeight='bold' mb={8}  >Fall Limited Edition Sneakers</Text>
+        <Text mb={5}>
           These low profile sneakers are your perfect casual wear companion.
-          Featuringdurable rubber outer sole, they'll withstand everything the
+          Featuring durable rubber outer sole, they'll withstand everything the
           weather can offer.
         </Text>
 
@@ -59,11 +59,11 @@ const ProductContainer = () => {
         </HStack>
         <Button variant="plain">$250.00</Button>
         <HStack>
-          <Button variant="plain">
+          <Button variant="plain" bg='#f7f8fd'>
             <NumberInput.Root defaultValue="0" unstyled spinOnPress={false}>
               <HStack gap="2">
                 <NumberInput.DecrementTrigger asChild>
-                  <IconButton variant="outline" size="sm">
+                  <IconButton variant="plain" size="sm">
                     <LuMinus />
                   </IconButton>
                 </NumberInput.DecrementTrigger>
@@ -73,14 +73,14 @@ const ProductContainer = () => {
                   minW="3ch"
                 />
                 <NumberInput.IncrementTrigger asChild>
-                  <IconButton variant="outline" size="sm">
+                  <IconButton variant="plain" size="sm">
                     <LuPlus />
                   </IconButton>
                 </NumberInput.IncrementTrigger>
               </HStack>
             </NumberInput.Root>
           </Button>
-          <Button colorPalette='orange.500' variant="solid">
+          <Button colorPalette='orange' variant="solid">
             <Image src={cartIcon}></Image> Add to cart
           </Button>
         </HStack>
