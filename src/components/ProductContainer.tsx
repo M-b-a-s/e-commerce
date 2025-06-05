@@ -25,7 +25,7 @@ const ProductContainer = () => {
     imageProductThumbnail4,
   ];
   return (
-    <Grid templateColumns="repeat(2, 1fr)" paddingX={10}  >
+    <Grid templateColumns="1fr 2fr" paddingX={10} gap='100px' >
       <GridItem >
         <Box width="300px">
           <Image src={imageProduct} boxSize="300px" borderRadius="xl"></Image>
