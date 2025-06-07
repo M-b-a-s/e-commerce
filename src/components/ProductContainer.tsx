@@ -45,14 +45,14 @@ const ProductContainer = () => {
         </Box>
       </GridItem>
       <GridItem>
-        <Box>
+        <Box paddingTop={10} >
           <Text fontWeight="bold" color="gray.500" textStyle="xs">
             SNEAKER COMPANY
           </Text>
-          <Text textStyle="5xl" fontWeight="bold" mb={8}>
-            Fall Limited Edition Sneakers
+          <Text textStyle="4xl" fontWeight="bold" mb={8}>
+            Fall Limited Edition<br/> Sneakers
           </Text>
-          <Text mb={5}>
+          <Text mb={5} color="gray.500" textStyle='sm'>
             These low profile sneakers are your perfect casual wear<br/> companion.
             Featuring durable rubber outer sole, they'll<br/> withstand everything
             the weather can offer.
@@ -60,9 +60,9 @@ const ProductContainer = () => {
 
           <HStack>
             <Text textStyle='xl' fontWeight='bold'>$125.00</Text>
-            <Button variant="solid">50%</Button>
+            <Button variant="solid" size='xs'>50%</Button>
           </HStack>
-          <Text textDecoration='line-through' color='gray.500' fontWeight='semibold'>$250.00</Text>
+          <Text textDecoration='line-through' color='gray.500' fontWeight='semibold' textStyle='xs'>$250.00</Text>
           <HStack width="100%">
             <Button variant="plain" bg="#f7f8fd">
               <NumberInput.Root defaultValue="0" unstyled spinOnPress={false}>
