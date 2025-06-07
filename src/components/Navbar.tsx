@@ -3,8 +3,13 @@ import { ColorModeButton } from "./ui/color-mode";
 import logo from "../assets/images/logo.svg";
 import cartIcon from "../assets/images/icon-cart.svg";
 import imageAvatar from "../assets/images/image-avatar.png";
+import CartBadge from "./CartBadge";
 
-const Navbar = () => {
+interface NavbarProps {
+  cartCount: number;
+}
+
+const Navbar = ({ cartCount }: NavbarProps) => {
   return (
     <Box padding="4" borderBottom='1px solid' borderColor='gray.300'>
       <HStack justify="space-between">
@@ -23,9 +28,12 @@ const Navbar = () => {
           </HStack>
         </Box>
         <Box>
-          <HStack gapX={4}>
+          <HStack gapX={4} position="relative">
             <ColorModeButton />
-            <Image src={cartIcon}></Image>
+            <Box position="relative" display="inline-block">
+              <Image src={cartIcon}></Image>
+              <CartBadge count={cartCount} />
+            </Box>
             <Image src={imageAvatar} boxSize={8}></Image>
           </HStack>
         </Box>

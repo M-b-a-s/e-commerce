@@ -1,4 +1,4 @@
-import { Box, Image, Flex } from "@chakra-ui/react";
+import { Box, Image} from "@chakra-ui/react";
 import { useEffect } from "react";
 import closeIcon from "../assets/images/icon-close.svg";
 import chevronLeftIcon from "../assets/images/icon-previous.svg";

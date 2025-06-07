@@ -14,7 +14,11 @@ import { useState } from "react";
 import { productImages } from "../data";
 import ImageModal from "./ImageModal";
 
-const ProductContainer = () => {
+interface ProductContainerProps {
+  setCartCount: (count: number) => void;
+}
+
+const ProductContainer = ({ setCartCount }: ProductContainerProps) => {
   const [quantity, setQuantity] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,6 +39,10 @@ const ProductContainer = () => {
 
   const handleModalNext = () => {
     setActiveIndex((prev) => (prev === productImages.length - 1 ? 0 : prev + 1));
+  };
+
+  const handleAddToCart = () => {
+    setCartCount(quantity);
   };
 
   return (
@@ -153,7 +161,7 @@ const ProductContainer = () => {
                   <Image src={plusIcon} alt="plus" />
                 </Button>
               </HStack>
-              <Button colorPalette="orange" variant="solid" width="60%">
+              <Button colorPalette="orange" variant="solid" width="60%" onClick={handleAddToCart}>
                 <Image src={cartIcon}></Image> Add to cart
               </Button>
             </HStack>
