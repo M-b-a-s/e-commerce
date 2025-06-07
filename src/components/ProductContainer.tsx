@@ -7,25 +7,15 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import imageProduct from "../assets/images/image-product-1.jpg";
-import imageProductThumbnail1 from "../assets/images/image-product-1-thumbnail.jpg";
-import imageProductThumbnail2 from "../assets/images/image-product-2-thumbnail.jpg";
-import imageProductThumbnail3 from "../assets/images/image-product-3-thumbnail.jpg";
-import imageProductThumbnail4 from "../assets/images/image-product-4-thumbnail.jpg";
 import cartIcon from "../assets/images/icon-cart.svg";
 import minusIcon from "../assets/images/icon-minus.svg";
 import plusIcon from "../assets/images/icon-plus.svg";
 import { useState } from "react";
+import { productImages } from "../data";
 
 const ProductContainer = () => {
-  const thumbnails = [
-    imageProductThumbnail1,
-    imageProductThumbnail2,
-    imageProductThumbnail3,
-    imageProductThumbnail4,
-  ];
-
-   const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const handleDecrement = () => {
     setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
@@ -34,21 +24,28 @@ const ProductContainer = () => {
   const handleIncrement = () => {
     setQuantity((prev) => prev + 1);
   };
+
   return (
     <Grid templateColumns="1fr 2fr" paddingX={10} gap="100px">
       <GridItem>
         <Box width="300px">
-          <Image src={imageProduct} boxSize="300px" borderRadius="xl"></Image>
+          <Image
+            src={productImages[activeIndex].main}
+            boxSize="300px"
+            borderRadius="xl"
+          />
           <HStack justify="space-between">
-            {thumbnails.map((thumbnail, index) => (
+            {productImages.map((img, idx) => (
               <Image
-                key={index}
-                src={thumbnail}
-                boxSize="60px"
+                key={idx}
+                src={img.thumbnail}
+                boxSize="65px"
                 borderRadius="md"
                 cursor="pointer"
-                _hover={{ border: "2px solid #000" }}
-                mt={5}
+                border={activeIndex === idx ? "2px solid #ff7d1a" : "2px solid transparent"}
+                onClick={() => setActiveIndex(idx)}
+                _hover={{ border: "2px solid #ff7d1a" }}
+                mt={4}
               />
             ))}
           </HStack>
@@ -60,25 +57,37 @@ const ProductContainer = () => {
             SNEAKER COMPANY
           </Text>
           <Text textStyle="4xl" fontWeight="bold" mb={8}>
-            Fall Limited Edition<br/> Sneakers
+            Fall Limited Edition<br /> Sneakers
           </Text>
-          <Text mb={5} color="gray.500" textStyle='sm'>
-            These low profile sneakers are your perfect casual wear<br/> companion.
-            Featuring durable rubber outer sole, they'll<br/> withstand everything
+          <Text mb={5} color="gray.500" textStyle="sm">
+            These low profile sneakers are your perfect casual wear<br /> companion.
+            Featuring durable rubber outer sole, they'll<br /> withstand everything
             the weather can offer.
           </Text>
 
           <HStack>
-            <Text textStyle='xl' fontWeight='bold'>$125.00</Text>
-            <Button variant="solid" size='xs'>50%</Button>
+            <Text textStyle="xl" fontWeight="bold">
+              $125.00
+            </Text>
+            <Button variant="solid" size="xs">
+              50%
+            </Button>
           </HStack>
-          <Text textDecoration='line-through' color='gray.500' fontWeight='semibold' textStyle='xs' mb={4}>$250.00</Text>
+          <Text
+            textDecoration="line-through"
+            color="gray.500"
+            fontWeight="semibold"
+            textStyle="xs"
+            mb={4}
+          >
+            $250.00
+          </Text>
           <HStack width="100%">
             <HStack
               bg="#f7f8fd"
               borderRadius="md"
               px={4}
-              width={'40'}
+              width={"40"}
               justify={"space-between"}
             >
               <Button
@@ -88,7 +97,7 @@ const ProductContainer = () => {
                 minW="auto"
                 p={0}
               >
-                <Image src={minusIcon} alt="minus"  />
+                <Image src={minusIcon} alt="minus" />
               </Button>
               <Text fontSize="lg" minW="3ch" textAlign="center">
                 {quantity}
@@ -100,7 +109,7 @@ const ProductContainer = () => {
                 minW="auto"
                 p={0}
               >
-                <Image src={plusIcon} alt="plus"/>
+                <Image src={plusIcon} alt="plus" />
               </Button>
             </HStack>
             <Button colorPalette="orange" variant="solid" width="60%">
