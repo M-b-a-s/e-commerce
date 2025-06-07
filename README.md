@@ -87,7 +87,7 @@ src/
 
 ## Development Workflow
 
-### Professional Workflow (as used by top companies)
+### Workflow 
 
 1. **Branching Strategy**
    - Use `main` for production-ready code.
