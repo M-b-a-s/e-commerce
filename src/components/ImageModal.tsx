@@ -47,57 +47,89 @@ const ImageModal = ({
       justifyContent="center"
       onClick={onClose}
     >
-      <Flex
+      <Box
         position="relative"
-        bg="white"
-        borderRadius="xl"
-        p={4}
         onClick={e => e.stopPropagation()}
+        display="flex"
         alignItems="center"
+        justifyContent="center"
       >
-        {/* Previous Button */}
-        <Box
-          as="button"
-          onClick={onPrev}
-          bg="transparent"
-          border="none"
-          cursor="pointer"
-          mr={2}
-        >
-          <Image src={chevronLeftIcon} alt="Previous" boxSize={8} />
-        </Box>
         {/* Main Image */}
         <Image
           src={images[activeIndex].main}
           boxSize={["80vw", "500px"]}
           borderRadius="xl"
           alt="Product"
+          bg="transparent"
+          zIndex={1}
+          display="block"
         />
+        {/* Previous Button */}
+        <Box
+          as="button"
+          onClick={onPrev}
+          bg="white"
+          border="none"
+          borderRadius="full"
+          boxSize="36px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          cursor="pointer"
+          position="absolute"
+          left={-6}
+          top="50%"
+          transform="translateY(-50%)"
+          zIndex={2}
+          p={0}
+          boxShadow="md"
+        >
+          <Image src={chevronLeftIcon} alt="Previous" boxSize={4} />
+        </Box>
         {/* Next Button */}
         <Box
           as="button"
           onClick={onNext}
-          bg="transparent"
+          bg="white"
           border="none"
+          borderRadius="full"
+          boxSize="36px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
           cursor="pointer"
-          ml={2}
+          position="absolute"
+          right={-6}
+          top="50%"
+          transform="translateY(-50%)"
+          zIndex={2}
+          p={0}
+          boxShadow="md"
         >
-          <Image src={chevronRightIcon} alt="Next" boxSize={8} />
+          <Image src={chevronRightIcon} alt="Next" boxSize={4} />
         </Box>
         {/* Close Button */}
         <Box
           as="button"
           onClick={onClose}
-          bg="transparent"
+          bg="white"
           border="none"
+          borderRadius="full"
+          boxSize="28px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
           cursor="pointer"
           position="absolute"
           top={2}
           right={2}
+          zIndex={3}
+          p={0}
+          boxShadow="md"
         >
-          <Image src={closeIcon} alt="Close" boxSize={6} />
+          <Image src={closeIcon} alt="Close" boxSize={4} />
         </Box>
-      </Flex>
+      </Box>
     </Box>
   );
 };
