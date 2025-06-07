@@ -5,8 +5,6 @@ import {
   GridItem,
   HStack,
   Image,
-  IconButton,
-  NumberInput,
   Text,
 } from "@chakra-ui/react";
 import imageProduct from "../assets/images/image-product-1.jpg";
@@ -15,7 +13,9 @@ import imageProductThumbnail2 from "../assets/images/image-product-2-thumbnail.j
 import imageProductThumbnail3 from "../assets/images/image-product-3-thumbnail.jpg";
 import imageProductThumbnail4 from "../assets/images/image-product-4-thumbnail.jpg";
 import cartIcon from "../assets/images/icon-cart.svg";
-import { LuMinus, LuPlus } from "react-icons/lu";
+import minusIcon from "../assets/images/icon-minus.svg";
+import plusIcon from "../assets/images/icon-plus.svg";
+import { useState } from "react";
 
 const ProductContainer = () => {
   const thumbnails = [
@@ -24,6 +24,16 @@ const ProductContainer = () => {
     imageProductThumbnail3,
     imageProductThumbnail4,
   ];
+
+   const [quantity, setQuantity] = useState(0);
+
+  const handleDecrement = () => {
+    setQuantity((prev) => (prev > 0 ? prev - 1 : 0));
+  };
+
+  const handleIncrement = () => {
+    setQuantity((prev) => prev + 1);
+  };
   return (
     <Grid templateColumns="1fr 2fr" paddingX={10} gap="100px">
       <GridItem>
@@ -45,8 +55,8 @@ const ProductContainer = () => {
         </Box>
       </GridItem>
       <GridItem>
-        <Box paddingTop={10} >
-          <Text fontWeight="bold" color="gray.500" textStyle="xs">
+        <Box paddingTop={10} width={"400px"}>
+          <Text fontWeight="bold" color="gray.500" textStyle="xs" mb={2}>
             SNEAKER COMPANY
           </Text>
           <Text textStyle="4xl" fontWeight="bold" mb={8}>
@@ -62,30 +72,38 @@ const ProductContainer = () => {
             <Text textStyle='xl' fontWeight='bold'>$125.00</Text>
             <Button variant="solid" size='xs'>50%</Button>
           </HStack>
-          <Text textDecoration='line-through' color='gray.500' fontWeight='semibold' textStyle='xs'>$250.00</Text>
+          <Text textDecoration='line-through' color='gray.500' fontWeight='semibold' textStyle='xs' mb={4}>$250.00</Text>
           <HStack width="100%">
-            <Button variant="plain" bg="#f7f8fd">
-              <NumberInput.Root defaultValue="0" unstyled spinOnPress={false}>
-                <HStack gap="2">
-                  <NumberInput.DecrementTrigger asChild>
-                    <IconButton variant="plain" size="sm">
-                      <LuMinus />
-                    </IconButton>
-                  </NumberInput.DecrementTrigger>
-                  <NumberInput.ValueText
-                    textAlign="center"
-                    fontSize="lg"
-                    minW="3ch"
-                  />
-                  <NumberInput.IncrementTrigger asChild>
-                    <IconButton variant="plain" size="sm">
-                      <LuPlus />
-                    </IconButton>
-                  </NumberInput.IncrementTrigger>
-                </HStack>
-              </NumberInput.Root>
-            </Button>
-            <Button colorPalette="orange" variant="solid">
+            <HStack
+              bg="#f7f8fd"
+              borderRadius="md"
+              px={4}
+              width={'40'}
+              justify={"space-between"}
+            >
+              <Button
+                variant="plain"
+                bg="transparent"
+                onClick={handleDecrement}
+                minW="auto"
+                p={0}
+              >
+                <Image src={minusIcon} alt="minus"  />
+              </Button>
+              <Text fontSize="lg" minW="3ch" textAlign="center">
+                {quantity}
+              </Text>
+              <Button
+                variant="plain"
+                bg="transparent"
+                onClick={handleIncrement}
+                minW="auto"
+                p={0}
+              >
+                <Image src={plusIcon} alt="plus"/>
+              </Button>
+            </HStack>
+            <Button colorPalette="orange" variant="solid" width="60%">
               <Image src={cartIcon}></Image> Add to cart
             </Button>
           </HStack>
