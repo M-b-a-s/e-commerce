@@ -25,8 +25,8 @@ const ProductContainer = () => {
     imageProductThumbnail4,
   ];
   return (
-    <Grid templateColumns="1fr 2fr" paddingX={10} gap='100px' >
-      <GridItem >
+    <Grid templateColumns="1fr 2fr" paddingX={10} gap="100px">
+      <GridItem>
         <Box width="300px">
           <Image src={imageProduct} boxSize="300px" borderRadius="xl"></Image>
           <HStack justify="space-between">
@@ -44,46 +44,52 @@ const ProductContainer = () => {
           </HStack>
         </Box>
       </GridItem>
-      <GridItem >
-        <Text fontWeight='bold' color='gray.500' textStyle='xs'>SNEAKER COMPANY</Text>
-        <Text textStyle='5xl' fontWeight='bold' mb={8}  >Fall Limited Edition Sneakers</Text>
-        <Text mb={5}>
-          These low profile sneakers are your perfect casual wear companion.
-          Featuring durable rubber outer sole, they'll withstand everything the
-          weather can offer.
-        </Text>
+      <GridItem>
+        <Box>
+          <Text fontWeight="bold" color="gray.500" textStyle="xs">
+            SNEAKER COMPANY
+          </Text>
+          <Text textStyle="5xl" fontWeight="bold" mb={8}>
+            Fall Limited Edition Sneakers
+          </Text>
+          <Text mb={5}>
+            These low profile sneakers are your perfect casual wear<br/> companion.
+            Featuring durable rubber outer sole, they'll<br/> withstand everything
+            the weather can offer.
+          </Text>
 
-        <HStack>
-          <Button variant="plain">$125.00</Button>
-          <Button variant="solid">50%</Button>
-        </HStack>
-        <Button variant="plain">$250.00</Button>
-        <HStack>
-          <Button variant="plain" bg='#f7f8fd'>
-            <NumberInput.Root defaultValue="0" unstyled spinOnPress={false}>
-              <HStack gap="2">
-                <NumberInput.DecrementTrigger asChild>
-                  <IconButton variant="plain" size="sm">
-                    <LuMinus />
-                  </IconButton>
-                </NumberInput.DecrementTrigger>
-                <NumberInput.ValueText
-                  textAlign="center"
-                  fontSize="lg"
-                  minW="3ch"
-                />
-                <NumberInput.IncrementTrigger asChild>
-                  <IconButton variant="plain" size="sm">
-                    <LuPlus />
-                  </IconButton>
-                </NumberInput.IncrementTrigger>
-              </HStack>
-            </NumberInput.Root>
-          </Button>
-          <Button colorPalette='orange' variant="solid">
-            <Image src={cartIcon}></Image> Add to cart
-          </Button>
-        </HStack>
+          <HStack>
+            <Text textStyle='xl' fontWeight='bold'>$125.00</Text>
+            <Button variant="solid">50%</Button>
+          </HStack>
+          <Text textDecoration='line-through' color='gray.500' fontWeight='semibold'>$250.00</Text>
+          <HStack width="100%">
+            <Button variant="plain" bg="#f7f8fd">
+              <NumberInput.Root defaultValue="0" unstyled spinOnPress={false}>
+                <HStack gap="2">
+                  <NumberInput.DecrementTrigger asChild>
+                    <IconButton variant="plain" size="sm">
+                      <LuMinus />
+                    </IconButton>
+                  </NumberInput.DecrementTrigger>
+                  <NumberInput.ValueText
+                    textAlign="center"
+                    fontSize="lg"
+                    minW="3ch"
+                  />
+                  <NumberInput.IncrementTrigger asChild>
+                    <IconButton variant="plain" size="sm">
+                      <LuPlus />
+                    </IconButton>
+                  </NumberInput.IncrementTrigger>
+                </HStack>
+              </NumberInput.Root>
+            </Button>
+            <Button colorPalette="orange" variant="solid">
+              <Image src={cartIcon}></Image> Add to cart
+            </Button>
+          </HStack>
+        </Box>
       </GridItem>
     </Grid>
   );
