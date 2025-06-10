@@ -148,7 +148,7 @@ const ProductContainer = ({ setCartCount }: ProductContainerProps) => {
                 >
                   <Image src={minusIcon} alt="minus" />
                 </Button>
-                <Text fontSize="lg" minW="3ch" textAlign="center">
+                <Text fontSize="lg" minW="3ch" textAlign="center" color='#000' >
                   {quantity}
                 </Text>
                 <Button
